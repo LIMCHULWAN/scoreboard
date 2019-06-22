@@ -7,10 +7,10 @@ import {Player} from "./components/Player";
 class App extends React.Component{
   state = {
     players: [
-      {name:'LDK', score: 30, id: 1 },
-      {name:'HONG', score: 30, id: 2},
-      {name:'KIM', score: 30, id: 3},
-      {name:'PARK', score: 30, id: 4},
+      {name:'LDK', id: 1, score:0 },
+      {name:'HONG', id: 2, score:0},
+      {name:'KIM', id: 3, score:0},
+      {name:'PARK', id: 4, score:0},
     ]
   }
 
@@ -24,14 +24,24 @@ class App extends React.Component{
     })
   }
 
+    /**
+     * 스코어를 변경시키는 함수
+     * @param id : 플레이어 아이디
+     * @param delta : 증가면 1 감소면 2
+     */
+  handleChangeScore(id, delta){
+      console.log('change score', id, delta);
+  }
+
   render() {
     return(
         <div className="scoreboard">
           <Header title="My Scoreboard" totalPlayers={11}/>
           {
             this.state.players.map(player =>(
-                <Player name={player.name} id={player.id} key={player.id}
-                        removePlayer={this.handleRemovePlayer}/>
+                <Player name={player.name} id={player.id} key={player.id} score={player.score}
+                        removePlayer={this.handleRemovePlayer}
+                        changeScore={this.handleChangeScore}/>
             ))
           }
         </div>
