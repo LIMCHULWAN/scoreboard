@@ -1,3 +1,7 @@
+import {UPDATE_USER} from "../actionTypes";
+
+let maxId = 4;
+
 const playerInitialState = {
     title: 'My Scoreboard',
     players: [
@@ -9,5 +13,18 @@ const playerInitialState = {
 }
 
 export const playerReducer = (state = playerInitialState, action) => {
-    return state;
+    switch (action.type){
+        case UPDATE_USER:
+            state.players.push({
+                name:action.name,
+                id: ++maxId,
+                score: 0
+                });
+                return {
+                    ...state,
+                    players: [...state.players]
+                }
+        default:
+            return state;
+    }
 }

@@ -1,4 +1,6 @@
 import React from 'react';
+import {addPlayer} from "../redux/actions";
+import {connect} from "react-redux";
 
 export class AddPlayerForm extends React.Component {
     textInput = React.createRef();
@@ -20,3 +22,11 @@ export class AddPlayerForm extends React.Component {
         );
     }
 }
+
+// 액션을 디스패치하는 펑션을 props로 매핑
+const mapActionToProps = (dispatch) => ({
+    addPlayer:(name) => dispatch(addPlayer(name))
+})
+
+// 커링 펑션, HoC
+export default connect(null, mapActionToProps)(AddPlayerForm);

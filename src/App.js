@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import './App.css';
 import {Player} from "./components/Player";
-import {AddPlayerForm} from "./components/AddPlayerForm";
+import AddPlayerForm from "./components/AddPlayerForm";
 import {connect} from "react-redux";
 import {playerReducer} from "./redux/reducers/player";
 
@@ -72,7 +72,7 @@ class App extends React.Component{
             ))
           }
 
-          <AddPlayerForm addPlayer={this.handleAddPlayer}/>
+          <AddPlayerForm/>
         </div>
     )
   }
