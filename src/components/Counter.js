@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
+import {changeScore} from "../redux/actions";
 
-export class Counter extends React.Component{
+class Counter extends React.Component{
 
     constructor(){
         super();
@@ -40,3 +42,12 @@ Counter.propTypes = {
     score: PropTypes.number,
     changeScore: PropTypes.func
 }
+
+
+// 액션을 디스패치하는 펑션을 props로 매핑
+const mapActionToProps = (dispatch) => ({
+    changeScore:(id, delta) => dispatch(changeScore(id, delta))
+})
+
+// 커링 펑션, HoC
+export default connect(null, mapActionToProps)(Counter);

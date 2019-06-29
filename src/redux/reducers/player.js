@@ -1,4 +1,4 @@
-import {UPDATE_USER} from "../actionTypes";
+import {CHANGE_SCORE, UPDATE_USER} from "../actionTypes";
 
 let maxId = 4;
 
@@ -24,6 +24,16 @@ export const playerReducer = (state = playerInitialState, action) => {
                     ...state,
                     players: [...state.players]
                 }
+        case CHANGE_SCORE:
+            state.players.forEach(player => {
+                if(player.id === action.id){
+                    player.score += action.delta;
+                }
+            })
+            return {
+                ...state,
+                players: [...state.players]
+            }
         default:
             return state;
     }
