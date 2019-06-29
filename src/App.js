@@ -3,19 +3,12 @@ import Header from './components/Header';
 import './App.css';
 import {Player} from "./components/Player";
 import {AddPlayerForm} from "./components/AddPlayerForm";
+import {connect} from "react-redux";
+import {playerReducer} from "./redux/reducers/player";
 
 
 class App extends React.Component{
     maxId = 4;
-
-  state = {
-    players: [
-      {name:'LDK', id: 1, score:0 },
-      {name:'HONG', id: 2, score:0},
-      {name:'KIM', id: 3, score:0},
-      {name:'PARK', id: 4, score:0},
-    ]
-  }
 
   handleRemovePlayer = (id) => {
     console.log('remove player: '+id);
@@ -70,9 +63,9 @@ class App extends React.Component{
   render() {
     return(
         <div className="scoreboard">
-          <Header title="My Scoreboard" players={this.state.players}/>
+          <Header title="My Scoreboard" players={this.props.players}/>
           {
-            this.state.players.map(player =>(
+            this.props.players.map(player =>(
                 <Player name={player.name} id={player.id} key={player.id} score={player.score}
                         removePlayer={this.handleRemovePlayer}
                         changeScore={this.handleChangeScore}/>
@@ -85,4 +78,11 @@ class App extends React.Component{
   }
 }
 
-export default App;
+// store가 갖고 있는 state를 현재 컴포넌트의 Props로 subscribe한다.
+const mapStateToProps = (state) => ({
+    // 왼쪽은 props, 오른쪽은 state
+    players: state.playerReducer.players,    
+})
+
+// 커링 펑션, HoC
+export default connect(mapStateToProps, null)(App);
