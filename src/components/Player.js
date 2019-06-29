@@ -23,7 +23,7 @@ class Player extends React.Component{
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         console.log(nextProps, nextState);
-        return nextProps.score != this.props.score;
+        return nextProps.score !== this.props.score;
     }
 }
 
