@@ -1,7 +1,9 @@
 import React from 'react';
 import Counter from "./Counter";
+import {connect} from "react-redux";
+import {removePlayer} from "../redux/actions";
 
-export class Player extends React.Component{
+class Player extends React.Component{
     render(){
         console.log(this.props.name, ' rendered');
         const {removePlayer,id,name,score,changeScore} = this.props;
@@ -25,16 +27,11 @@ export class Player extends React.Component{
     }
 }
 
-// export const Player = (props) => {
-//     console.log(this.props.name, ' rendered');
-//
-//     return(
-//         <div className="player">
-//         <span className="player-name">
-//             <button className="remove-player" onClick={() => this.props.removePlayer(this.props.id)}>X</button>
-//             {this.props.name}
-//         </span>
-//             <Counter score={this.props.score} id={this.props.id} changeScore={this.props.changeScore} />
-//         </div>
-//     )
-// }
+
+// 액션을 디스패치하는 펑션을 props로 매핑
+const mapActionToProps = (dispatch) => ({
+    removePlayer:(id) => dispatch(removePlayer(id))
+})
+
+// 커링 펑션, HoC
+export default connect(null, mapActionToProps)(Player);
