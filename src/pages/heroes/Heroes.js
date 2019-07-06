@@ -17,7 +17,7 @@ export class Heroes extends React.Component {
             <>
                 {/*상세보기 네스티드 라우팅 구성 - 부모경로/자식경오/*/}
                 <Switch>
-                    <Route path="/heroes/:id" component={Hero}></Route>
+                    <Route path="/heroes/hero/:id" component={Hero}></Route>
                 </Switch>
 
                 <div className="row">
@@ -73,6 +73,6 @@ export class Heroes extends React.Component {
 
     handleClick = (id) => {
         console.log(id);
-        this.props.history.push(`/heroes/${id}`);
+        this.props.history.push(`/heroes/hero/${id}`);
     }
 }
