@@ -4,6 +4,7 @@ import {Home} from "./Home";
 import {Heroes} from "./heroes/Heroes";
 import Scoreboard from "./scoreboard/Scoreboard";
 import {Menu} from "./Menu";
+import {Hero} from "./heroes/Hero";
 
 export class Root extends React.Component {
 

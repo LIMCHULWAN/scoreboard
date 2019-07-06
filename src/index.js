@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import {Provider} from "react-redux";
 import {store} from "./redux/store";
+import {Provider} from "react-redux";
 import {Root} from "./pages/Root";
 
+import 'rc-pagination/dist/rc-pagination.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
