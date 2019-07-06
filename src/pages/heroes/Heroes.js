@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from '../utils/api';
+import axios from '../../utils/api';
 
 export class Heroes extends React.Component {
     state = {
@@ -8,11 +8,14 @@ export class Heroes extends React.Component {
 
     render() {
         return (
-            <ul>
+            <ul className="img-box">
                 {this.state.heroes.map(hero => (
-                    <li key={hero.id}>
-                        <img src={hero.photo} alt={hero.name} />
-                        <span>{hero.name}</span>
+                    <li key={hero.id} className="row align-items-center m-0">
+                        <div className="col-1 py-2">
+                            <img src={hero.photo ? hero.photo : process.env.PUBLIC_URL + '/images/baseline-face-24px.svg'} alt={hero.name}
+                                 className="img-fluid rounded-circle" style={{width: '100%'}} />
+                        </div>
+                        <span className="col">{hero.name}</span>
                     </li>
                 ))}
             </ul>
