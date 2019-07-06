@@ -2,6 +2,9 @@ import React from 'react';
 import {addPlayer} from "../redux/actions";
 import {connect} from "react-redux";
 
+import styles from '../pages/scoreboard/Scoreboard.module.css';
+
+
 export class AddPlayerForm extends React.Component {
     textInput = React.createRef();
 
@@ -14,10 +17,10 @@ export class AddPlayerForm extends React.Component {
 
     render() {
         return (
-            <form className="form" onSubmit={this.handleSubmit}>
-                <input type="text" className="input" placeholder="enter a player's name"
+            <form className={styles.form} onSubmit={this.handleSubmit}>
+                <input type="text" className={styles.input} placeholder="enter a player's name"
                        ref={this.textInput}></input>
-                <input type="submit" className="input" value="Add Player"></input>
+                <input type="submit" className={styles.input} value="Add Player"></input>
             </form>
         );
     }
