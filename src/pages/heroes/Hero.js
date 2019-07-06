@@ -54,4 +54,9 @@ export class Hero extends React.Component {
                 </div> : ''
         );
     }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        console.log(nextProps);
+        this.getHero(nextProps.match.params.id);
+    }
 }
