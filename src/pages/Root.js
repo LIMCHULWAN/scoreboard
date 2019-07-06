@@ -12,11 +12,13 @@ export class Root extends React.Component {
             <BrowserRouter>
                 <Menu></Menu>
                 {/*네스티드 라우팅 영역*/}
-                <Switch>
-                    <Route exact path="/" component={Home}></Route>
-                    <Route path="/heroes" component={Heroes}></Route>
-                    <Route path="/scoreboard" component={Scoreboard}></Route>
-                </Switch>
+                <div className="container" style={{backgroundColor: '#ffffff'}}>
+                    <Switch>
+                        <Route exact path="/" component={Home}></Route>
+                        <Route path="/heroes" component={Heroes}></Route>
+                        <Route path="/scoreboard" component={Scoreboard}></Route>
+                    </Switch>
+                </div>
             </BrowserRouter>
         );
     }
